@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.05s 0s linear;
+}
+
+button,
+[type="button"],
+[type="submit"],
+a[href] {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body {
+  height: 100vh;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+}

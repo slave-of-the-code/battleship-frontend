@@ -1,0 +1,21 @@
+$imgLogoSantex: "https://santex.wpengine.com/wp-content/uploads/2019/02/logo-santex@3x.png";
+
+.logoSantex {
+  position: relative;
+  > .logoSantex__image {
+    background: url($imgLogoSantex) no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 250px;
+    position: relative;
+  }
+  ::after {
+    content: "test";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    text-align: right;
+    color: gray;
+  }
+}

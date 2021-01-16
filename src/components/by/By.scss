@@ -1,0 +1,9 @@
+.by {
+  > .by__paragraph {
+    color: rgba(255, 255, 255, 0.25);
+    > .by__name {
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0 5px;
+    }
+  }
+}
