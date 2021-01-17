@@ -26,7 +26,7 @@ function App() {
         </div>
       </header>
       <section>
-        <Route path="/" component={Home} exact></Route>
+        <Route exact path="/" component={Home}></Route>
         <Route path="/GameList" component={GameList}></Route>
         <Route path="/ShipSetting" component={ShipSetting}></Route>
         <Route path="/BoardSetting/:id" component={BoardSetting}></Route>

@@ -1,17 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./Menu.scss";
 
 export const Menu = () => {
   return (
     <nav className="menu">
-      <Link to="/" className="--selected">
+      <NavLink exact to="/" activeClassName="active">
         Home
-      </Link>
-      <Link to="/GameList">Game List</Link>
-      <Link to="/ShipSetting">Ship Setting</Link>
-      <Link to="/BoardSetting/:id">Board Setting</Link>
+      </NavLink>
+      <NavLink to="/GameList" activeClassName="active">
+        Game List
+      </NavLink>
+      <NavLink to="/ShipSetting" activeClassName="active">
+        Ship Setting
+      </NavLink>
+      <NavLink to="/BoardSetting/:id" activeClassName="active">
+        Board Setting
+      </NavLink>
     </nav>
   );
 };

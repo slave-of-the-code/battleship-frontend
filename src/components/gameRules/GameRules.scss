@@ -1,6 +1,7 @@
 .gameRules {
   width: 300px;
   .gameRules__customAttempts {
+    margin: 1rem 0;
     > input {
       width: 100%;
       text-align: right;
@@ -18,6 +19,9 @@
         display: inline-block;
         text-align: center;
         margin: 0;
+        + small {
+          opacity: 0.5;
+        }
       }
     }
   }
