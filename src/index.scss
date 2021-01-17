@@ -12,6 +12,29 @@ button,
 a[href] {
   cursor: pointer;
   text-decoration: none;
+  border-style: none;
+  outline: none;
+}
+
+[type="text"],
+[type="number"] {
+  padding: 10px;
+  border-width: none;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  outline: none;
+}
+
+[type="radio"],
+[type="checkbox"] {
+  + label[for] {
+    padding: 10px;
+    margin: 5px;
+  }
+}
+
+::placeholder {
+  color: rgba(128, 128, 128, 0.5);
+  font-style: italic;
 }
 
 body {
@@ -24,3 +47,46 @@ ul,
 ol {
   list-style: none;
 }
+
+/* #region CUSTOM RADIOS */
+[type="radio"] {
+  display: none;
+  + label[for] {
+    color: rgba(128, 128, 128, 0.75);
+    background: rgba(128, 128, 128, 0.1);
+    cursor: pointer;
+    transition: background 0.25s 0s;
+    &:hover {
+      background: rgba(128, 128, 128, 0.45);
+    }
+  }
+  &:checked {
+    + label[for] {
+      background: rgba(128, 128, 128, 0.75);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+/* #endregion */
+
+/* #region CUSTOM CHECKBOX */
+[type="checkbox"] {
+  display: none;
+  + label[for] {
+    display: inline;
+    padding: 5px 15px;
+    color: rgba(128, 128, 128, 0.75);
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.25s 0s;
+    &:hover {
+      background: rgba(128, 128, 128, 0.45);
+    }
+  }
+  &:checked + label[for] {
+    background: rgba(128, 128, 128, 0.75);
+    color: rgba(255, 255, 255, 1);
+  }
+}
+/* #endregion */

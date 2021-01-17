@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./DarkSetting.scss";
+
 export const DarkSetting = () => {
   return (
     <div className="darkSetting">

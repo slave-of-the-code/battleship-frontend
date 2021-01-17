@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Board } from "../../components/board/Board";
+import { GameRules } from "../../components/gameRules/GameRules";
+
+import "./Home.scss";
 
 export const Home = () => {
   const [data, setData] = useState([]);
@@ -20,18 +24,17 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Home</h1>
-      {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
-      <ol>
-        {data.map((item) => {
-          return (
-            <li key={item.id}>
-              <strong>{item.name}</strong> | <small>{item.email}</small>
-            </li>
-          );
-        })}
-      </ol>
+    <div className="home">
+      <div className="home__container">
+        <Board></Board>
+        <div className="home__container__settings">
+          <GameRules></GameRules>
+          <div className="home__start">
+            <input type="text" placeholder="enter your name"></input>
+            <button>GO!</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

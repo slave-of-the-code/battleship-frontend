@@ -1,0 +1,24 @@
+.gameRules {
+  width: 300px;
+  .gameRules__customAttempts {
+    > input {
+      width: 100%;
+      text-align: right;
+    }
+  }
+  .gameRules__defaultAttempts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    > div {
+      width: 85px;
+      > label[for] {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+}
