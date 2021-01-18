@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.scss";
-import { BoardSetting } from "./components/boardSetting/boardSetting";
-import { GameList } from "./components/gameList/gameList";
+import { BoardSetting } from "./pages/boardSetting/BoardSetting";
 import { Home } from "./pages/home/Home";
 import { Menu } from "./components/menu/Menu";
-import { ShipSetting } from "./components/shipSetting/shipSetting";
+import { ShipSetting } from "./pages/shipSetting/ShipSetting";
+import { GameList } from "./pages/gameList/GameList";
 import { Languages } from "./components/languages/Languages";
 import { DarkSetting } from "./components/darkSetting/DarkSetting";
 import { By } from "./components/by/By";

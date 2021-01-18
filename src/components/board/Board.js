@@ -11,10 +11,13 @@ export const Board = () => {
       <ul className="board__container">
         {rows.map((rowValue, rowIndex) => {
           return (
-            <li>
+            <li key={rowIndex}>
               {cols.map((colValue, colIndex) => {
                 return (
-                  <button className="board__container__box">{`${rowValue}${colValue}`}</button>
+                  <button
+                    key={colIndex}
+                    className="board__container__box"
+                  >{`${rowValue}${colValue}`}</button>
                 );
               })}
             </li>
