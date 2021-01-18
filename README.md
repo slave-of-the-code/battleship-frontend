@@ -1,7 +1,7 @@
 # Battleship (front-end)
 
-## back-end code is 
-[repo](https://github.com/slave-of-the-code/battleship-frontend).
+## Repository back-end code is  
+[here](https://github.com/slave-of-the-code/battleship-frontend)
 
 ## run the app
 ### `npm start`
