@@ -1,8 +1,9 @@
 const board = {};
+const { API_BOARD_SETSHIPSHIDE } = require("../consts/const");
 
 board.setShipsHide = async (shipsLength) => {
   const setShips = await (
-    await fetch("http://localhost:4200/api/board/setShipsHide", {
+    await fetch(API_BOARD_SETSHIPSHIDE, {
       method: "POST",
       headers: {
         Accept: "application/json",
