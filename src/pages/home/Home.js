@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Board } from "../../components/board/Board";
 import { GameRules } from "../../components/gameRules/GameRules";
-
 import { setShipsHide } from "../../apis/board.api";
 
 import "./Home.scss";
-
 export const Home = () => {
-  const [data, setData] = useState({
+  const [game, setGame] = useState({
     username: "",
     turns: 0,
+    board: [],
   });
+  const [go, setGo] = useState(false);
 
   useEffect(() => {
     /** Set ships (hide)
@@ -20,19 +20,20 @@ export const Home = () => {
       4 that are 1 space long.
      */
     setShipsHide([4, 3, 3, 2, 2, 2, 1]).then((board) => {
-      console.log("BOARD", board);
+      setGame({ ...game, board });
+      console.log("HIDDEN BOATS", board);
     });
-    return () => {
-      // cleanup;
-    };
-  }, []);
+  }, [setGame]);
 
   const onSubmitGoForm = (e) => {
     e.preventDefault();
-    console.log("DATA IS", data);
+    // TODO :
+    // - disable settings
+    // enable board
+    setGo(true); // aplicar comportamiento para habilitar/deshabilitar board and settings
   };
   const onChangeData = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setGame({ ...game, [e.target.name]: e.target.value });
   };
 
   return (
@@ -41,18 +42,19 @@ export const Home = () => {
         <Board></Board>
         <div className="home__container__settings">
           <form onSubmit={onSubmitGoForm}>
-            <GameRules data={data} onChangeData={onChangeData}></GameRules>
+            <GameRules data={game} onChangeData={onChangeData}></GameRules>
             <div className="home__start">
               <input
                 type="text"
                 placeholder="enter your name"
-                value={data.username}
+                value={game.username}
                 name="username"
                 onChange={onChangeData}
               ></input>
               <button type="submit">GO!</button>
             </div>
           </form>
+          {/* <div>shots : {tableBoard.shots}</div> */}
         </div>
       </div>
     </div>

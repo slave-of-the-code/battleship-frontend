@@ -1,16 +1,26 @@
-const initialState = {
-  id: 1,
-  name: "Pepe",
-  fame: false,
-};
-
-const boardReducer = (state = initialState, action) => {
+export const boardReducer = (state, action) => {
   switch (action?.type) {
-    case "newName":
-      return {
-        ...state,
-        name: action.payload,
+    case "SHOT":
+      const newState = [...state];
+      newState[action.payload.row][action.payload.col] = {
+        state: action.payload.state,
       };
+      return newState;
+
+    case "CREATE":
+      const rows = action.payload.rows;
+      const cols = action.payload.cols;
+
+      let board = new Array(rows);
+      for (let r = 0; r < rows; r++) {
+        board[r] = new Array(cols);
+        for (let c = 0; c < cols; c++) {
+          board[r][c] = {
+            state: -1,
+          };
+        }
+      }
+      return board;
 
     default:
       break;
@@ -18,13 +28,3 @@ const boardReducer = (state = initialState, action) => {
 
   return state;
 };
-
-let board = boardReducer();
-console.log("state 1", board);
-
-board = boardReducer(initialState, {
-  type: "newName",
-  payload: "Gustavo",
-});
-
-console.log("state 2", board);
