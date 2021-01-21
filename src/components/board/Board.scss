@@ -1,21 +1,27 @@
 .board {
   margin: 0 1rem;
+  position: relative;
   > .board__container {
     font-size: 10px;
     > li {
       > .board__container__box {
         height: 3em;
         width: 3em;
-        color: rgba(128, 128, 128, 0.5);
+        color: rgba(128, 128, 128, 0.85);
         border: 1px solid rgba(255, 255, 255, 0.5);
-        &:hover {
+        &:hover:not(:disabled) {
           color: rgba(128, 128, 128, 1);
-          transform: scale(1.5);
+          transform: scale(1.25);
+          font-weight: 600;
         }
-        &:active {
+        &:active:not(:disabled) {
           border-color: rgba(128, 128, 128, 1);
           font-weight: 600;
           transform: scale(0.5);
+        }
+        &:disabled {
+          cursor: not-allowed;
+          color: rgba(128, 128, 128, 0.25);
         }
       }
     }

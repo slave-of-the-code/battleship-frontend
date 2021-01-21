@@ -13,7 +13,7 @@ import "./Board.scss";
 
 const initialState = [];
 
-export const Board = ({ hiddenBoats }) => {
+export const Board = ({ hiddenBoats, isAvailable }) => {
   const [board, dispatch] = useReducer(boardReducer, initialState);
 
   useEffect(() => {
@@ -28,15 +28,11 @@ export const Board = ({ hiddenBoats }) => {
     return () => {};
   }, []);
 
-  useEffect(() => {
-    return () => {};
-  }, [board]);
-
   const setCurrentPosition = (posRow, posCol) => {
     const action = {
       type: "SHOT",
       payload: {
-        state: Math.floor(Math.random() * 3),
+        hiddenBoats,
         row: posRow,
         col: posCol,
       },
@@ -56,6 +52,7 @@ export const Board = ({ hiddenBoats }) => {
                     key={colIndex}
                     className="board__container__box"
                     onClick={() => setCurrentPosition(rowIndex, colIndex)}
+                    disabled={!isAvailable}
                   >
                     {(() => {
                       switch (col.state) {
@@ -83,7 +80,9 @@ export const Board = ({ hiddenBoats }) => {
 
                         default:
                           return (
-                            <span>{[ROWS[rowIndex], colIndex].join("")}</span>
+                            <span>
+                              {[ROWS[rowIndex], colIndex + 1].join("")}
+                            </span>
                           );
                       }
                     })()}

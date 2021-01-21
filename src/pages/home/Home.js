@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Board } from "../../components/board/Board";
 import { GameRules } from "../../components/gameRules/GameRules";
-import { setShipsHide } from "../../apis/board.api";
+import { setHiddenBoats } from "../../apis/board.api";
 
 import "./Home.scss";
+
 export const Home = () => {
   const [game, setGame] = useState({
     username: "",
     turns: 0,
-    board: [],
+    hiddenBoats: [],
   });
+
   const [go, setGo] = useState(false);
 
   useEffect(() => {
@@ -19,18 +21,14 @@ export const Home = () => {
       3 that are 2 spaces long.
       4 that are 1 space long.
      */
-    setShipsHide([4, 3, 3, 2, 2, 2, 1]).then((board) => {
-      setGame({ ...game, board });
-      console.log("HIDDEN BOATS", board);
+    setHiddenBoats([4, 3, 3, 2, 2, 2, 1]).then((hiddenBoats) => {
+      setGame((g) => ({ ...g, hiddenBoats }));
     });
   }, [setGame]);
 
   const onSubmitGoForm = (e) => {
     e.preventDefault();
-    // TODO :
-    // - disable settings
-    // enable board
-    setGo(true); // aplicar comportamiento para habilitar/deshabilitar board and settings
+    setGo(true);
   };
   const onChangeData = (e) => {
     setGame({ ...game, [e.target.name]: e.target.value });
@@ -39,8 +37,11 @@ export const Home = () => {
   return (
     <div className="home">
       <div className="home__container">
-        <Board></Board>
+        <Board hiddenBoats={game.hiddenBoats} isAvailable={go}></Board>
         <div className="home__container__settings">
+          <div
+            className={`${go ? "home__container__settings__disabled" : ""}`}
+          ></div>
           <form onSubmit={onSubmitGoForm}>
             <GameRules data={game} onChangeData={onChangeData}></GameRules>
             <div className="home__start">
