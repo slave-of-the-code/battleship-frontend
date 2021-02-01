@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import "./App.scss";
 import { BoardSetting } from "./pages/boardSetting/BoardSetting";
@@ -18,18 +18,25 @@ function App() {
       <header>
         <div className="logo">Battleship</div>
         <div className="menu">
-          <Menu></Menu>
+          <Menu />
           <div className="siteSettings">
-            <DarkSetting></DarkSetting>
-            <Languages></Languages>
+            <DarkSetting />
+            <Languages />
           </div>
         </div>
       </header>
       <section>
-        <Route exact path="/" component={Home}></Route>
-        <Route path="/GameList" component={GameList}></Route>
-        <Route path="/ShipSetting" component={ShipSetting}></Route>
-        <Route path="/BoardSetting/:id" component={BoardSetting}></Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/GameList" component={GameList} />
+        <Route path="/ShipSetting" component={ShipSetting} />
+        <Route path="/BoardSetting/:id" component={BoardSetting} />
+    
+        /* page not found */
+        <Route component={404Componenet} />
+        /* or */
+        <Redirect to="/" />
+    
+    
       </section>
       <footer>
         <LogoSantex></LogoSantex>
